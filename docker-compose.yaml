@@ -1,0 +1,13 @@
+services:
+  ia-tutor-app:
+    build: .
+    container_name: ia_tutor_app
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./vector_db:/app/vector_db
+    ports:
+      - "7861:7860"
+    # Aumenta a memória compartilhada, o que pode ser necessário para alguns modelos de ML.
+    shm_size: '2gb'
